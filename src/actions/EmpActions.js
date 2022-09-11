@@ -29,14 +29,13 @@ export const UpdateEmpAction = (emp) => (dispatch, getState, action) => {
     EMPDETAILS: { empdetail },
   } = getState();
 
-  // dispatch({
-  //   type: "UPDATE_EMP",
-  //   payload: empdetail.map((emp) => {
-  //     if (emp.id === empdetail.id) {
-  //       return (emp.empdetail = emp);
-  //     }
-  //   }),
-  // });
+  dispatch({
+    type: "UPDATE_EMP",
+    payload: empdetail.map((row) => {
+      if (emp.id === row.id) return { ...row, emp: emp.emp };
+      return row;
+    }),
+  });
 
   console.log(dispatch, getState, action, emp);
 };

@@ -71,9 +71,13 @@ function App() {
                     placeholder="Update Employee Name"
                     onChange={(e) => setNewEmp(e.target.value)}
                   />
-                  <button onClick={(t) => handleUpdate(t)}>Update</button>
-                  {console.log(t.id)}
-                  <button onClick={() => handleRemove(t)}>Delete</button>
+                  <button type="button" onClick={() => handleUpdate(t)}>
+                    Update
+                  </button>
+
+                  <button type="button" onClick={() => handleRemove(t)}>
+                    Delete
+                  </button>
                 </li>
               ))}
           </ul>
