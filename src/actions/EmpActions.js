@@ -23,3 +23,20 @@ export const RemoveEmpAction = (emp) => (dispatch, getState) => {
     payload: empdetail.filter((t) => t.id !== emp.id),
   });
 };
+
+export const UpdateEmpAction = (emp) => (dispatch, getState, action) => {
+  const {
+    EMPDETAILS: { empdetail },
+  } = getState();
+
+  // dispatch({
+  //   type: "UPDATE_EMP",
+  //   payload: empdetail.map((emp) => {
+  //     if (emp.id === empdetail.id) {
+  //       return (emp.empdetail = emp);
+  //     }
+  //   }),
+  // });
+
+  console.log(dispatch, getState, action, emp);
+};

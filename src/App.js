@@ -1,10 +1,15 @@
 import "./App.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { AddEmpAction, RemoveEmpAction } from "./actions/EmpActions";
+import {
+  AddEmpAction,
+  RemoveEmpAction,
+  UpdateEmpAction,
+} from "./actions/EmpActions";
 
 function App() {
   const [emp, setEmployee] = useState();
+  const [NewEmp, setNewEmp] = useState("");
 
   const dispatch = useDispatch();
   const EMPDETAILS = useSelector((state) => state.EMPDETAILS);
@@ -18,6 +23,11 @@ function App() {
 
   const handleRemove = (t) => {
     dispatch(RemoveEmpAction(t));
+  };
+
+  const handleUpdate = (obj) => {
+    console.log(obj);
+    dispatch(UpdateEmpAction({ id: obj.id, emp: NewEmp }));
   };
 
   return (
@@ -55,6 +65,14 @@ function App() {
               empdetail.map((t) => (
                 <li key={t.id} className="singleTodo">
                   <span className="todoText">{t.emp}</span>
+
+                  <input
+                    type="text"
+                    placeholder="Update Employee Name"
+                    onChange={(e) => setNewEmp(e.target.value)}
+                  />
+                  <button onClick={(t) => handleUpdate(t)}>Update</button>
+                  {console.log(t.id)}
                   <button onClick={() => handleRemove(t)}>Delete</button>
                 </li>
               ))}
